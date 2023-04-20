@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using MVVM.Views;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Net;
+using System.Globalization;
 
 namespace MVVM.ViewModels
 {
@@ -12,10 +15,10 @@ namespace MVVM.ViewModels
     {
         public ObservableCollection<FriendViewModel> Friends { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-        public ICommand CreateFriendCommand { protected get; set; }
-        public ICommand DeleteFriendCommand { protected get; set; }
-        public ICommand SaveFriendCommand { protected get; set; }
-        public ICommand BackCommand { protected get; set; }
+        public ICommand CreateFriendCommand { get; set; }
+        public ICommand DeleteFriendCommand {  get; set; }
+        public ICommand SaveFriendCommand {  get; set; }
+        public ICommand BackCommand { get; set; }
         FriendViewModel selectedFriend;
         public INavigation Navigation { get; set; }
 
@@ -44,7 +47,29 @@ namespace MVVM.ViewModels
         }
         private void CreateFriend()
         {
-            Navigation.PushAsync(new FriendPage(new FriendViewModel() { listViewModel=}))
+            Navigation.PushAsync(new FriendPage(new FriendViewModel() { ListViewModel = this}));
+        }
+        private void Back()
+        {
+            Navigation.PopAsync();
+        }
+        private void SaveFriend(object friendObject)
+        {
+            FriendViewModel friend = friendObject as FriendViewModel;
+            if(friend != null && friend.IsValid && !Friends.Contains(friend))
+            {
+                Friends.Add(friend);
+            }
+            Back();
+        }
+        private void DeleteFriend(object friendObject)
+        {
+            FriendViewModel friend = friendObject as FriendViewModel;
+            if (friend != null)
+            {
+                Friends.Remove(friend);
+            }
+            Back();
         }
     }
 }

@@ -9,18 +9,22 @@ namespace MVVM.ViewModels
     public class FriendViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        FriendViewModel lvm;
+        FriendsListViewModel lvm;
         public Friend Friend { get; set; }
         public FriendViewModel()
         {
             Friend= new Friend();
         }
-        public FriendsListViewModel listViewModel
+        public FriendsListViewModel ListViewModel
         {
             get { return lvm; }
             set
             {
-                if (lvm != value) { lvm = value; OnPropertyChanged("ListViewModel"); }
+                if (lvm != value) 
+                {
+                    lvm = value; 
+                    OnPropertyChanged("ListViewModel"); 
+                }
             }
         }
         public string Name
@@ -38,13 +42,30 @@ namespace MVVM.ViewModels
             get { return Friend.Phone; }
             set { if (Friend.Phone != value) { Friend.Phone = value; OnPropertyChanged("Phone"); } }
         }
+        public string Country
+        {
+            get { return Friend.Country; }
+            set { if (Friend.Country != value) { Friend.Country = value; OnPropertyChanged("Country"); } }
+        }
+        public string Address
+        {
+            get { return Friend.Address; }
+            set { if (Friend.Address != value) { Friend.Address = value; OnPropertyChanged("Address"); } }
+        }
+        public string Sugu
+        {
+            get { return Friend.Sugu; }
+            set { if (Friend.Sugu != value) { Friend.Sugu = value; OnPropertyChanged("Sugu"); } }
+        }
         public bool IsValid
         {
             get
             {
                 return ((!string.IsNullOrEmpty(Name.Trim()))) ||
                     (!string.IsNullOrEmpty(Phone.Trim())) ||
-                    (!string.IsNullOrEmpty(Email.Trim()));
+                    (!string.IsNullOrEmpty(Email.Trim())) ||
+                    (!string.IsNullOrEmpty(Country.Trim())) ||
+                    (!string.IsNullOrEmpty(Address.Trim()));
             }
         }
         protected void OnPropertyChanged(string propName)

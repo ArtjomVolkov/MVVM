@@ -2,11 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MVVM.Views.FriendsListPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout>
+        <Label Text="Sõbraloend" FontSize="Title" FontFamily="Bold" HorizontalOptions="Center"/>
+        <Button Text="Lisa" Command="{Binding CreateFriendCommand}"/>
+        <ListView x:Name="booksList" ItemsSource="{Binding Friends}"
+                  SelectedItem="{Binding SelectedFriend, Mode=TwoWay}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label Text="Nimi:" />
+                                <Label Text="{Binding Name}" FontSize="Medium" />
+                                <Label Text="Sugu:" />
+                                <Label Text="{Binding Sugu}" FontSize="Medium" />
+                                <Label Text="Email:" />
+                                <Label Text="{Binding Email}" FontSize="Small"/>
+                                <Label Text="Telefon:" />
+                                <Label Text="{Binding Phone}" FontSize="Small" />
+                                <Label Text="Riik:" />
+                                <Label Text="{Binding Country}" FontSize="Small"/>
+                                <Label Text="Address:" />
+                                <Label Text="{Binding Address}" FontSize="Small" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

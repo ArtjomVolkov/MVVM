@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,12 @@ namespace MVVM.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FriendPage : ContentPage
     {
-        public FriendPage()
+        public FriendViewModel ViewModel { get; private set; }
+        public FriendPage(FriendViewModel vm)
         {
             InitializeComponent();
+            ViewModel = vm;
+            this.BindingContext = ViewModel;
         }
     }
 }
