@@ -16,14 +16,6 @@
                                 <Label Text="{Binding Name}" FontSize="Medium" />
                                 <Label Text="Sugu:" />
                                 <Label Text="{Binding Sugu}" FontSize="Medium" />
-                                <Label Text="Email:" />
-                                <Label Text="{Binding Email}" FontSize="Small"/>
-                                <Label Text="Telefon:" />
-                                <Label Text="{Binding Phone}" FontSize="Small" />
-                                <Label Text="Riik:" />
-                                <Label Text="{Binding Country}" FontSize="Small"/>
-                                <Label Text="Address:" />
-                                <Label Text="{Binding Address}" FontSize="Small" />
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

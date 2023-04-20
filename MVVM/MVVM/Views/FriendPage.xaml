@@ -9,9 +9,9 @@
             <Label Text="Sugu (Mees / Naine)"/>
             <Entry Text="{Binding Sugu}" FontSize="Medium"/>
             <Label Text="Email"/>
-            <Entry Text="{Binding Email}" FontSize="Medium" />
+            <Entry x:Name="emails" Text="{Binding Email}" FontSize="Medium" />
             <Label Text="Telefon"/>
-            <Entry Text="{Binding Phone}" FontSize="Medium" />
+            <Entry x:Name="tel" Text="{Binding Phone}" FontSize="Medium" />
             <Label Text="Riik"/>
             <Entry Text="{Binding Country}" FontSize="Medium" />
             <Label Text="Address"/>
@@ -21,6 +21,11 @@
             <Button Text="Lisa" Command="{Binding ListViewModel.SaveFriendCommand}" CommandParameter="{Binding}" />
             <Button Text="Kustuta" Command="{Binding ListViewModel.DeleteFriendCommand}" CommandParameter="{Binding}" />
             <Button Text="Tagasi" Command="{Binding ListViewModel.BackCommand}" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button x:Name="sms_btn" Grid.Row="0" Text="SMS" Clicked="sms_btn_Clicked"/>
+            <Entry x:Name="text" Grid.Row="1" Placeholder="Kirjuta text siia"/>
+            <Button x:Name="call_btn" Grid.Row="0" Text="Call" Clicked="call_btn_Clicked"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>
